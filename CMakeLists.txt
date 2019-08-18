@@ -10,7 +10,7 @@ project(sbpl_utils)
 set(ROS_BUILD_TYPE Release)
 set(CMAKE_CXX_FLAGS "-std=c++11")
 
-find_package(catkin REQUIRED COMPONENTS sbpl)
+find_package(catkin REQUIRED COMPONENTS sbpl_perch)
 # find_package(OpenCV REQUIRED)
 find_package(Boost REQUIRED COMPONENTS graph)
 
@@ -20,7 +20,7 @@ include_directories(${PROJECT_SOURCE_DIR}/include ${OpenCV_INCLUDE_DIRS}
 catkin_package(
     DEPENDS
       # OpenCV 
-    CATKIN_DEPENDS sbpl
+    CATKIN_DEPENDS sbpl_perch
     INCLUDE_DIRS include
     LIBRARIES ${PROJECT_NAME}
 )
