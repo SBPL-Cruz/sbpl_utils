@@ -1,5 +1,5 @@
 #include <sbpl_utils/environments/boost_graph_environment.h>
-#include <sbpl/headers.h>
+#include <sbpl_perch/headers.h>
 
 #include <stdexcept>
 
