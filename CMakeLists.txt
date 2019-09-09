@@ -19,14 +19,14 @@ include_directories(${PROJECT_SOURCE_DIR}/include ${OpenCV_INCLUDE_DIRS}
 
 catkin_package(
     DEPENDS
-      # OpenCV 
+      # OpenCV
     CATKIN_DEPENDS sbpl_perch
     INCLUDE_DIRS include
     LIBRARIES ${PROJECT_NAME}
 )
 
 # common commands for building c++ executables and libraries
-add_library(${PROJECT_NAME} 
+add_library(${PROJECT_NAME}
             src/hash_manager/hash_manager.cpp
             src/environments/boost_graph_environment.cpp
             src/visualization/grid_visualizer.cpp)
@@ -41,3 +41,6 @@ target_link_libraries(hash_manager_test ${PROJECT_NAME} libopencv)
 
 add_executable(boost_environment_test tests/boost_environment_test.cpp)
 target_link_libraries(boost_environment_test ${PROJECT_NAME})
+
+install(DIRECTORY include/${PROJECT_NAME}/
+        DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION})
