@@ -11,7 +11,7 @@ set(ROS_BUILD_TYPE Release)
 set(CMAKE_CXX_FLAGS "-std=c++11")
 
 find_package(catkin REQUIRED COMPONENTS sbpl_perch)
-# find_package(OpenCV REQUIRED)
+ find_package(OpenCV REQUIRED)
 find_package(Boost REQUIRED COMPONENTS graph)
 
 include_directories(${PROJECT_SOURCE_DIR}/include ${OpenCV_INCLUDE_DIRS}
@@ -19,7 +19,7 @@ include_directories(${PROJECT_SOURCE_DIR}/include ${OpenCV_INCLUDE_DIRS}
 
 catkin_package(
     DEPENDS
-      # OpenCV
+    OpenCV
     CATKIN_DEPENDS sbpl_perch
     INCLUDE_DIRS include
     LIBRARIES ${PROJECT_NAME}
@@ -41,6 +41,12 @@ target_link_libraries(hash_manager_test ${PROJECT_NAME} libopencv)
 
 add_executable(boost_environment_test tests/boost_environment_test.cpp)
 target_link_libraries(boost_environment_test ${PROJECT_NAME})
+
+install(TARGETS ${PROJECT_NAME}
+  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
 
 install(DIRECTORY include/${PROJECT_NAME}/
         DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION})
